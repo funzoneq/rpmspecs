@@ -161,8 +161,8 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,0755)
 %doc AUTHORS ChangeLog COPYING COPYING.Boost COPYING.BSD COPYING.zlib README
-%{_libdir}/libtorrent-rasterbar.so.6
-%{_libdir}/libtorrent-rasterbar.so.6.0.0
+#%{_libdir}/libtorrent-rasterbar.so.6
+#%{_libdir}/libtorrent-rasterbar.so.6.0.0
 
 
 %files	devel
