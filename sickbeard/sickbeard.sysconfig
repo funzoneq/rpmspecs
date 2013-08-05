@@ -1,0 +1,12 @@
+# Sickbeard service configuration
+
+#run Sickbeard as
+SB_USER=sickbeard
+
+SB_HOME=/opt/sickbeard
+
+SB_PIDFILE=/var/run/sickbeard/sickbeard.pid
+
+#use nice, ionice, taskset to start sickbeard
+#  example: SB_NICE="nice -n 19 ionice -c3"
+SB_NICE=
