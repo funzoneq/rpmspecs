@@ -1,6 +1,6 @@
 Name:           deluge
 Version:        1.3.6
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A GTK+ BitTorrent client with support for DHT, UPnP, and PEX
 Group:          Applications/Internet
 License:        GPLv3 with exceptions
@@ -259,6 +259,9 @@ fi
 gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 %changelog
+* Mon Aug 05 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 1.3.6-3
+- version bump (a.vermeer@freshway.biz)
+
 * Mon Aug 05 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 1.3.6-2
 - new package built with tito
 
