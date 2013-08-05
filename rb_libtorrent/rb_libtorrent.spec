@@ -1,5 +1,5 @@
 Name:		rb_libtorrent
-Version:	0.15.10
+Version:	0.15.11
 Release:	1%{?dist}
 
 Summary:	A C++ BitTorrent library aiming to be the best alternative
@@ -193,6 +193,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Mon Aug 05 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 0.15.11-1
+- new package built with tito
+
 * Mon Aug 20 2012 LTN Packager <packager-el6rpms@LinuxTECH.NET> - 0.15.10-1
 - new upstream release
 - now using external libgeoip as we now have in our repo
