@@ -161,8 +161,9 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,0755)
 %doc AUTHORS ChangeLog COPYING COPYING.Boost COPYING.BSD COPYING.zlib README
-#%{_libdir}/libtorrent-rasterbar.so.6
-#%{_libdir}/libtorrent-rasterbar.so.6.0.0
+%{_libdir}/libtorrent-rasterbar.so.7
+%{_libdir}/libtorrent-rasterbar.so.7.0.0
+
 
 
 %files	devel
@@ -183,7 +184,13 @@ rm -rf %{buildroot}
 %{_bindir}/make_torrent
 %{_bindir}/simple_torrent_client
 %{_bindir}/torrent_client_test
-
+%{_bindir}/connection_tester
+%{_bindir}/fragmentation_test
+%{_bindir}/parse_hash_fails
+%{_bindir}/parse_request_log
+%{_bindir}/rss_reader
+%{_bindir}/upnp_test
+%{_bindir}/utp_test
 
 %files	python
 %defattr (-,root,root,0755)
