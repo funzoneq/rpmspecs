@@ -3,7 +3,7 @@
 Summary: Sick Beard
 Name: sickbeard
 Version: 498
-Release: 0%{?dist}
+Release: 1%{?dist}
 License: Python license
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -45,3 +45,6 @@ rm -rf $RPM_BUILD_ROOT
 /etc/sysconfig/sickbeard
 
 %changelog
+* Mon Aug 05 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 498-1
+- new package built with tito
+
