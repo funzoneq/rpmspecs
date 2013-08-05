@@ -1,6 +1,6 @@
 Name:		rb_libtorrent
 Version:	0.16.8
-Release:	1%{?dist}
+Release:	2%{?dist}
 
 Summary:	A C++ BitTorrent library aiming to be the best alternative
 Group:		System Environment/Libraries
@@ -193,6 +193,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Mon Aug 05 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 0.16.8-2
+- Tito fix (a.vermeer@freshway.biz)
+
 * Mon Aug 05 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 0.16.9-1
 - Version bump (a.vermeer@freshway.biz)
 
