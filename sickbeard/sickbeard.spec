@@ -3,7 +3,7 @@
 Summary: Sick Beard
 Name: sickbeard
 Version: 498
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: Python license
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -46,6 +46,9 @@ rm -rf $RPM_BUILD_ROOT
 /etc/sysconfig/sickbeard
 
 %changelog
+* Wed Aug 07 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 498-3
+- RPM, don't be smart. Don't auto add requirements (a.vermeer@freshway.biz)
+
 * Wed Aug 07 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 498-2
 - Adding source (a.vermeer@freshway.biz)
 
