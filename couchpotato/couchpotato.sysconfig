@@ -1,0 +1,8 @@
+# Couchpatato service configuration
+CP_USER=couchpotato
+
+CP_HOME=/opt/couchpotato
+
+CP_PIDFILE=/var/run/couchpotato/couchpotato.pid
+
+CP_DATA=~/.couchpotato
