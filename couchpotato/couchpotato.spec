@@ -28,7 +28,7 @@ The ultimate PVR application that searches for and manages your TV shows
 rm -rf $RPM_BUILD_ROOT/*
 install -D -m 644 %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/couchpotato
 install -D -m 755 init/fedora $RPM_BUILD_ROOT/etc/init.d/couchpotato
-install -D $RPM_BUILD_ROOT/opt/couchpotato
+mkdir $RPM_BUILD_ROOT/opt/couchpotato
 mv * $RPM_BUILD_ROOT/opt/couchpotato
 
 %pre
