@@ -15,6 +15,7 @@ Requires: python >= 2.6
 Requires: python-cheetah
 Source0: Sick-Beard-master.zip
 Source1: sickbeard.sysconfig
+AutoReq: no
 
 %description
 The ultimate PVR application that searches for and manages your TV shows
