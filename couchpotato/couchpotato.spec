@@ -3,7 +3,7 @@
 Summary: CouchPotato Server
 Name: couchpotato
 Version: fc8db130e02b8b6475a95e6725dc5dfa4926c645
-Release: 0%{?dist}
+Release: 1%{?dist}
 License: Python license
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -44,3 +44,6 @@ rm -rf $RPM_BUILD_ROOT
 /etc/sysconfig/couchpotato
 
 %changelog
+* Wed Aug 07 2013 Arnoud Vermeer <a.vermeer@freshway.biz> fc8db130e02b8b6475a95e6725dc5dfa4926c645-1
+- new package built with tito
+
