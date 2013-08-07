@@ -2,7 +2,7 @@
 
 Summary: CouchPotato Server
 Name: couchpotato
-Version: fc8db130e02b8b6475a95e6725dc5dfa4926c645
+Version: 2.1.0
 Release: 1%{?dist}
 License: Python license
 Group: Development/Libraries
