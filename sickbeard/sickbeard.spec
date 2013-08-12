@@ -43,7 +43,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 /opt/sickbeard/*
 /etc/init.d/sickbeard
-/etc/sysconfig/sickbeard
+%config(noreplace) /etc/sysconfig/sickbeard
 
 %changelog
 * Wed Aug 07 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 498-3

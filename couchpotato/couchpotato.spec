@@ -42,7 +42,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 /opt/couchpotato/*
 /etc/init.d/couchpotato
-/etc/sysconfig/couchpotato
+%config(noreplace) /etc/sysconfig/couchpotato
 
 %changelog
 * Wed Aug 07 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 2.1.0-2
