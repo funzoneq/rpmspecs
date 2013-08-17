@@ -105,6 +105,7 @@ export DESTDIR=%{buildroot}
     --with-http_degradation_module \
     --with-http_stub_status_module \
     --with-http_perl_module \
+    --with-http_spdy_module \
     --with-mail \
     --with-mail_ssl_module \
     --with-debug \
