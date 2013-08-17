@@ -9,7 +9,7 @@
 
 Name:              nginx
 Version:           1.4.2
-Release:           1%{?dist}
+Release:           2%{?dist}
 
 Summary:           A high performance web server and reverse proxy server
 Group:             System Environment/Daemons
@@ -215,6 +215,9 @@ fi
 
 
 %changelog
+* Sat Aug 17 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 1.4.2-2
+- Add spdy! (a.vermeer@freshway.biz)
+
 * Sat Aug 17 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 1.4.2-1
 - new package built with tito
 
