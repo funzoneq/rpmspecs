@@ -9,7 +9,7 @@
 
 Name:              nginx
 Version:           1.4.2
-Release:           0%{?dist}
+Release:           1%{?dist}
 
 Summary:           A high performance web server and reverse proxy server
 Group:             System Environment/Daemons
@@ -214,6 +214,9 @@ fi
 
 
 %changelog
+* Sat Aug 17 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 1.4.2-1
+- new package built with tito
+
 * Fri Apr 26 2013 Jamie Nguyen <jamielinux@fedoraproject.org> - 1.0.15-5
 - enable debugging (#956845)
 - trim changelog
