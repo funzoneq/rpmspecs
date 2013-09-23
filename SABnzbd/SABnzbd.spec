@@ -9,9 +9,8 @@ Url:		http://sabnzbd.org
 Group:		Productivity/Networking/News/Clients
 
 Source:		http://downloads.sourceforge.net/project/sabnzbdplus/sabnzbdplus/%{version}/SABnzbd-%{version}-src.tar.gz
-Source1:	SABnzbd.desktop
-Source2:	SABnzbd.service
-Source3:	SABnzbd.sysconfig
+Source1:	SABnzbd.init
+Source2:	SABnzbd.sysconfig
 
 BuildRequires:	fdupes
 BuildRequires:	python
