@@ -1,13 +1,13 @@
 # SABnzbd service configuration
 
 #run SABnzbd as
-sabuser=sabnzbd
+sabuser=
 
 #modify if SABnzbd config file is somewhere else for some reason
 config="/home/${sabuser}/.sabnzbd/sabnzbd.ini"
 
 #API key (can be found in the above config file)
-apikey=1f73d8af6f28988a4e761853b23ff58c
+apikey=
 
 #gui address, eg: ${protocol}://${host}:${port}/sabznbd/
 protocol=http

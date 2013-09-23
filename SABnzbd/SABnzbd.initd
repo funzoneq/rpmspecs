@@ -1,0 +1,134 @@
+#!/bin/sh
+
+# chkconfig: - 20 80
+# description: SABnzbd
+
+exec="@DATADIR@/SABnzbd/SABnzbd.py"
+prog="SABnzbd"
+
+if [ -f /etc/sysconfig/$prog ]; then
+        . /etc/sysconfig/$prog
+fi
+
+if [ ! -n "$sabuser" -o ! -n "$apikey" -o ! -n "$protocol" -o ! -n  "$host"  -o ! -n "$port" ]; then
+  echo "Please configure /etc/sysconfig/$prog first."
+  [ ! -n "$sabuser"  ] && echo -n " sabuser"
+  [ ! -n "$apikey"   ] && echo -n " apikey"
+  [ ! -n "$protocol" ] && echo -n " protocol"
+  [ ! -n "$host"     ] && echo -n " host"
+  [ ! -n "$port"     ] && echo -n " port"
+  echo " variable(s) undefined"
+  exit 1
+fi
+
+if [ ! -f "$config" ]; then
+  echo "Can't find $config."
+  echo "Please run SABnzbd as $sabuser manually to configure it first."
+  exit 1
+fi
+                   
+ 
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+start() {
+    [ -x $exec ] || exit 5
+    [ -f $config ] || exit 6
+
+    echo -n $"Starting $prog: "
+    # if not running, start it up here, usually something like "daemon $exec"
+    daemon --user=$sabuser $nicecmd $exec -d -f $config
+    retval=$?
+    echo
+    return $retval
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    if [ -n "$username" ]; then
+ 	/usr/bin/wget -q --delete-after --no-check-certificate "${protocol}://${host}:${port}/sabnzbd/api?mode=shutdown&ma_username=${username}&ma_password=${password}&apikey=${apikey}"
+    else
+	/usr/bin/wget -q --delete-after --no-check-certificate "${protocol}://${host}:${port}/sabnzbd/api?mode=shutdown&apikey=${apikey}"
+    fi
+    
+    for sleepval in 1s 5s 10s 20s;do
+	sleep $sleepval
+	if [ ! `rh_status_q` ];then
+	    echo_success
+	    echo
+	    return 0
+	fi
+    done
+    echo_failure
+    return 1
+}
+
+restart() {
+    stop
+    start
+}
+
+reload() {
+    restart
+}
+
+force_reload() {
+    restart
+}
+
+rh_status() {
+    # run checks to determine if the service is running or use generic status
+
+    /usr/bin/nc -z $host $port &> /dev/null
+    retval=$?
+
+    if [ $retval -eq 0 ];then
+	pid=`ps -fu $sabuser | grep -v grep | grep SABnzbd.py | awk '{print $2}'`
+	echo "$prog (pid $pid) is running..."
+	return $retval
+    else
+	echo "$prog is stopped"
+	return $retval
+    fi
+
+}
+
+rh_status_q() {
+    rh_status >/dev/null 2>&1
+}
+
+
+case "$1" in
+    start)
+        rh_status_q && exit 0
+        $1
+        ;;
+    stop)
+        rh_status_q || exit 0
+        $1
+        ;;
+    restart)
+        $1
+        ;;
+    reload)
+        rh_status_q || exit 7
+        $1
+        ;;
+    force-reload)
+        force_reload
+        ;;
+    status)
+        rh_status
+        ;;
+    condrestart|try-restart)
+        rh_status_q || exit 0
+        restart
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop|status|restart|condrestart|try-restart|reload|force-reload}"
+        exit 2
+esac
+exit $?
+
+
+
