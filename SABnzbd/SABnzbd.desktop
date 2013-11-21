@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=SABnzbd
+Comment=Download files from Usenet using nzb files
+Exec=SABnzbd
+Icon=@DATADIR@/SABnzbd/icons/nzb.ico
+Terminal=true
+Type=Application
+Categories=Network;

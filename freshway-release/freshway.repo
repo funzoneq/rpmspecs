@@ -1,0 +1,6 @@
+[freshway]
+name=FreshWay Repo
+baseurl=http://vps.us.freshway.biz/CentOS-6-Production-x86_64/RPMS.freshway/
+gpgcheck=0
+enabled=1
+priority=1

@@ -1,141 +1,128 @@
-# Written by: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+#global sabrc             RC2
 
-Name:		SABnzbd
-Version:	0.7.11
-Release:	1.1
-License:	GPL-2.0
-Summary:	An open source binary newsreader written in Python
-Url:		http://sabnzbd.org
-Group:		Productivity/Networking/News/Clients
+Name:			SABnzbd
+Version:		0.7.16
+Release:		1%{?dist}
+Summary:		An Open Source Binary Newsreader written in Python
+Group:			Applications/Internet
+License:		GPLv2
+URL:			http://sabnzbd.org/
 
-Source:		http://downloads.sourceforge.net/project/sabnzbdplus/sabnzbdplus/%{version}/SABnzbd-%{version}-src.tar.gz
-Source1:	SABnzbd.desktop
-Source2:	SABnzbd.service
-Source3:	SABnzbd.sysconfig
+#Source0:		SABnzbd-%{version}%{?sabrc}-src.tar.gz
+Source0:                http://downloads.sourceforge.net/project/sabnzbdplus/sabnzbdplus/%{version}/SABnzbd-%{version}-src.tar.gz
+Source1:		SABnzbd.sh
+Source2:		SABnzbd.desktop
+Source3:		SABnzbd.initd
+Source4:		SABnzbd.sysconfig
 
-BuildRequires:	fdupes
-BuildRequires:	python
-BuildRequires:	systemd
-BuildRequires:	update-desktop-files
+BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+BuildArch:		noarch
 
-Requires:	par2cmdline
-Requires:	python-Cheetah
-Requires:	python-pyOpenSSL
-Requires:	python-yenc
-Requires:	unrar
-Requires:	unzip
-%{systemd_requires}
+BuildRequires:		desktop-file-utils
+%if 0%{?rhel} == 5
+BuildRequires:		python26-devel
+BuildRequires:		python26-setuptools
+%global pyver 26
+%global pybasever 2.6
 
-PreReq:		%fillup_prereq
+%global __python /usr/bin/python%{pybasever}
+%global __os_install_post %{__python26_os_install_post}
+%else
+BuildRequires:		python-devel
+BuildRequires:		python-setuptools
+%endif
 
-BuildArch:	noarch
+Requires:		nc
+Requires:		par2cmdline
+%if 0%{?rhel} == 5
+Requires:		python26
+Requires:		pyOpenSSL26
+Requires:		python26-cheetah
+Requires:		python26-yenc
+%else
+Requires:		pyOpenSSL
+Requires:		python-cheetah
+Requires:		python-yenc
+%endif
+Requires:		unrar
+Requires:		unzip
+Requires:		wget
+
+Requires(post):		chkconfig
+Requires(preun):	chkconfig
+Requires(preun):	initscripts
+Requires(postun):	initscripts
+
+Obsoletes:		SABnzbd-beta
 
 %description
 SABnzbd makes Usenet as simple and streamlined as possible by automating
-everything we can. All you have to do is add an .nzb. SABnzbd takes over from
-there, where it will be automatically downloaded, verified, repaired, extracted
-and filed away with zero human interaction.
-
+everything it can. All you have to do is add an .nzb. SABnzbd takes over
+from there, where it will be automatically downloaded, verified, repaired,
+extracted and filed away with zero human interaction.
 
 %prep
-%setup -q
-
+%setup -q -n SABnzbd-%{version}%{?sabrc}
 
 %build
-# Create translation files
-python tools/make_mo.py
 
+%if 0%{?rhel} == 5
+sed -i "s|/usr/bin/python|/usr/bin/python26|g" %{_builddir}/SABnzbd-%{version}%{?sabrc}/SABnzbd.py
+%endif
+sed -i "s|@DATADIR@|%{_datadir}|g" %{SOURCE1} %{SOURCE2} %{SOURCE3}
 
 %install
-install -dm755 $RPM_BUILD_ROOT%{_datadir}/SABnzbd/
 
-find . -maxdepth 1 -type d \
-  ! -name po -a \
-  ! -name locale -a \
-  ! -name licenses -a \
-  ! -name . \
-  -print > dirs
+rm -rf %{buildroot}
 
-while read LINE; do
-  find ${LINE} -type f \
-    -exec install -Dm644 {} $RPM_BUILD_ROOT%{_datadir}/SABnzbd/{} \;
-done < dirs
+#SABnzbd
+%{__install} -d -m0755  %{buildroot}%{_datadir}/SABnzbd
+for dir in email interfaces locale po util tools sabnzbd cherrypy SABnzbd.py* icons gntp;do
+%{__cp} -a %{_builddir}/SABnzbd-%{version}%{?sabrc}/$dir %{buildroot}%{_datadir}/SABnzbd
+done
 
-rm dirs
+#start script
+%{__install} -d -m0755 %{buildroot}%{_bindir}
+%{__install} -D -m0755 %{SOURCE1} %{buildroot}%{_bindir}/SABnzbd
 
-install -m755 ./SABnzbd.py $RPM_BUILD_ROOT%{_datadir}/SABnzbd/
+#desktop file
+%{__install} -d -m0755 %{buildroot}%{_datadir}/applications
+desktop-file-install --vendor fedora --dir %{buildroot}%{_datadir}/applications %{SOURCE2}
 
-# Install translations
-find locale -type f -exec \
-  install -Dm644 {} $RPM_BUILD_ROOT%{_datadir}/SABnzbd/{} \;
-%find_lang SABnzbd
-
-# Install desktop file
-install -dm755 $RPM_BUILD_ROOT%{_datadir}/applications/
-install -m644 %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/applications/
-%suse_update_desktop_file %{name}
-
-# Install systemd service
-install -dm755 $RPM_BUILD_ROOT%{_unitdir}/
-install -m644 %{SOURCE2} $RPM_BUILD_ROOT%{_unitdir}/
-
-# Install sysconfig file
-install -dm755 $RPM_BUILD_ROOT%{_localstatedir}/adm/fillup-templates/
-install -m644 %{SOURCE3} \
-  $RPM_BUILD_ROOT%{_localstatedir}/adm/fillup-templates/sysconfig.%{name}
-
-# Remove shebang lines from the Python 2 files to avoid rpmlint's
-# non-executable-script error.
-find $RPM_BUILD_ROOT -type f -name '*.py' -a ! -name 'SABnzbd.py' -exec \
-  sed -i '/^#!/d' {} \;
-
-# Cherry daemon should be executable
-chmod 755 $RPM_BUILD_ROOT%{_datadir}/SABnzbd/cherrypy/cherryd
-
-# Link duplicate files together to save space
-%fdupes $RPM_BUILD_ROOT
-
-# Remove duplicate GPL-2.0 and GPL-3.0 license files
-rm -v \
-  $RPM_BUILD_ROOT%{_datadir}/SABnzbd/interfaces/Plush/licenses/LICENSE-GPL3.txt
-rm -v $RPM_BUILD_ROOT%{_datadir}/SABnzbd/interfaces/smpl/GPL2.txt
-rm -v $RPM_BUILD_ROOT%{_datadir}/SABnzbd/interfaces/smpl/GPL3.txt
-
-# Remove empty files
-find $RPM_BUILD_ROOT -type f -empty -delete
+#init script
+%{__install} -d -m0755 %{buildroot}%{_sysconfdir}/init.d
+%{__install} -D -m0755 %{SOURCE3} %{buildroot}%{_sysconfdir}/init.d/SABnzbd
+%{__install} -d -m0755 %{buildroot}%{_sysconfdir}/sysconfig
+%{__install} -D -m0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/sysconfig/SABnzbd
 
 
-%pre
-%service_add_pre SABnzbd.service
+%clean
+rm -rf %{buildroot}
+
+%files
+%defattr(-,root,root,-)
+%doc CHANGELOG.txt COPYRIGHT.txt GPL2.txt GPL3.txt INSTALL.txt ISSUES.txt README.txt Sample-PostProc.sh licenses/*
+%{_bindir}/SABnzbd
+%{_datadir}/SABnzbd
+%{_datadir}/applications/fedora-SABnzbd.desktop
+%{_sysconfdir}/init.d/SABnzbd
+%config(noreplace) %{_sysconfdir}/sysconfig/SABnzbd
 
 %post
-%service_add_post SABnzbd.service
-%{fillup_only SABnzbd}
+update-desktop-database &>/dev/null ||:
+/sbin/chkconfig --add SABnzbd
 
 %preun
-%service_del_preun SABnzbd.service
+if [ $1 = 0 ] ; then
+    /sbin/service SABnzbd stop >/dev/null 2>&1
+    /sbin/chkconfig --del SABnzbd
+fi
 
 %postun
-%service_del_postun SABnzbd.service
-
-
-%files -f SABnzbd.lang
-%defattr(-,root,root)
-%doc CHANGELOG.txt COPYRIGHT.txt GPL2.txt GPL3.txt ISSUES.txt README.txt
-%doc licenses/
-%{_unitdir}/SABnzbd.service
-%{_datadir}/applications/SABnzbd.desktop
-%{_datadir}/SABnzbd/
-%{_localstatedir}/adm/fillup-templates/sysconfig.%{name}
+if [ "$1" -ge "1" ] ; then
+    /sbin/service SABnzbd condrestart >/dev/null 2>&1 || :
+fi
+update-desktop-database &> /dev/null ||:
 
 
 %changelog
-* Mon Mar 18 2013 Xiao-Long Chen <chenxiaolong@cxl.epac.to> - 0.7.11-1
-- Version 0.7.11
-
-* Wed Aug 15 2012 Xiao-Long Chen <chenxiaolong@cxl.epac.to> - 0.7.3-2
-- Put locales in /usr/share/SABnzbd
-
-* Wed Aug 15 2012 Xiao-Long Chen <chenxiaolong@cxl.epac.to> - 0.7.3-1
-- Initial release
-- Version 0.7.3

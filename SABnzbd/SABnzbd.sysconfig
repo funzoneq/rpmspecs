@@ -1,0 +1,23 @@
+# SABnzbd service configuration
+
+#run SABnzbd as
+sabuser=
+
+#modify if SABnzbd config file is somewhere else for some reason
+config="/home/${sabuser}/.sabnzbd/sabnzbd.ini"
+
+#API key (can be found in the above config file)
+apikey=
+
+#gui address, eg: ${protocol}://${host}:${port}/sabznbd/
+protocol=http
+host=localhost
+port=8080
+
+#leave blank if no username/password is required to access the gui
+username=
+password=
+
+#use nice, ionice, taskset to start SABnzbd
+nicecmd=
+#  example: nicecmd="nice -n 19 ionice -c3"
