@@ -9,7 +9,7 @@
 
 Name:              nginx
 Version:           1.4.4
-Release:           0%{?dist}
+Release:           1%{?dist}
 
 Summary:           A high performance web server and reverse proxy server
 Group:             System Environment/Daemons
@@ -215,6 +215,9 @@ fi
 
 
 %changelog
+* Thu Nov 21 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 1.4.4-1
+- Version bump (arnoud@tumblr.com)
+
 * Sat Aug 17 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 1.4.2-2
 - Add spdy! (a.vermeer@freshway.biz)
 
