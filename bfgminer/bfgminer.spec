@@ -41,6 +41,7 @@ make DESTDIR=$RPM_BUILD_ROOT install
 %{_libdir}/pkgconfig/libblkmaker_jansson-0.1.pc
 
 %docdir /usr/share/doc/
+%doc /usr/share/doc/bfgminer/AUTHORS
 %doc /usr/share/doc/bfgminer/COPYING
 %doc /usr/share/doc/bfgminer/HACKING
 %doc /usr/share/doc/bfgminer/NEWS
