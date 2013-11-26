@@ -8,7 +8,7 @@ Source: 	http://luke.dashjr.org/programs/bitcoin/files/bfgminer/%{version}/bfgmi
 Url: 		https://bitcointalk.org/?topic=78192
 BuildRoot:  	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:	autoconf, automake, libtool, jansson-devel, git, libcurl-devel
-BuildRequires:	libusb1-devel, libudev-devel, yasm-devel, ncurses-devel
+BuildRequires:	libusb1-devel, libudev-devel, yasm-devel, ncurses-devel, uthash-devel
 
 %description
 This is a multi-threaded multi-pool GPU, FPGA and CPU miner with ATI GPU
