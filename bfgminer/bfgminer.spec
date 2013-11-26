@@ -1,7 +1,7 @@
 Summary: 	A bitcoin miner
 Name: 		bfgminer
-Version: 	3.0.2
-Release: 	1%{?dist}
+Version: 	3.6.0
+Release: 	0%{?dist}
 License: 	GPL
 Group:		Applications/System
 Source: 	http://luke.dashjr.org/programs/bitcoin/files/bfgminer/%{version}/bfgminer-%{version}.tbz2
