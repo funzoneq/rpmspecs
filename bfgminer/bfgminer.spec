@@ -1,7 +1,7 @@
 Summary: 	A bitcoin miner
 Name: 		bfgminer
 Version: 	3.6.0
-Release: 	0%{?dist}
+Release: 	1%{?dist}
 License: 	GPL
 Group:		Applications/System
 Source: 	http://luke.dashjr.org/programs/bitcoin/files/bfgminer/%{version}/bfgminer-%{version}.tbz2
@@ -55,6 +55,9 @@ make DESTDIR=$RPM_BUILD_ROOT install
 %{_libdir}/pkgconfig/libblkmaker_jansson-0.1.pc
 
 %changelog
+* Tue Nov 26 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 3.6.0-1
+- Version bump
+
 * Sun Jun 02 2013 Arnoud Vermeer <rpms@freshway.biz> 3.0.2-1
 - Now with the latest 3.0.2 release
 
