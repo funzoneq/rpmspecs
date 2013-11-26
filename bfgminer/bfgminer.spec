@@ -4,7 +4,7 @@ Version: 	3.6.0
 Release: 	1%{?dist}
 License: 	GPL
 Group:		Applications/System
-Source: 	http://luke.dashjr.org/programs/bitcoin/files/bfgminer/%{version}/bfgminer-%{version}.tbz2
+Source: 	http://luke.dashjr.org/programs/bitcoin/files/bfgminer/%{version}/bfgminer-%{version}.zip
 Url: 		https://bitcointalk.org/?topic=78192
 BuildRoot:  	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:	autoconf, automake, libtool, jansson-devel, git, libcurl-devel
