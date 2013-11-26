@@ -33,11 +33,27 @@ make DESTDIR=$RPM_BUILD_ROOT install
 %{_bindir}/bitforce-firmware-flash
 %{_includedir}/libblkmaker-0.1/blkmaker.h
 %{_includedir}/libblkmaker-0.1/blktemplate.h
+%{_includedir}/libblkmaker-0.1/blkmaker_jansson.h
 %{_libdir}/libblkmaker-0.1.la
 %{_libdir}/libblkmaker-0.1.so*
 %{_libdir}/libblkmaker_jansson-0.1.la
 %{_libdir}/libblkmaker_jansson*.so*
 %{_libdir}/pkgconfig/libblkmaker_jansson-0.1.pc
+%{_doc}/bfgminer/AUTHORS
+%{_doc}/bfgminer/COPYING
+%{_doc}/bfgminer/HACKING
+%{_doc}/bfgminer/NEWS
+%{_doc}/bfgminer/README
+%{_doc}/bfgminer/README.ASIC
+%{_doc}/bfgminer/README.FPGA
+%{_doc}/bfgminer/README.RPC
+%{_doc}/bfgminer/example.conf
+%{_doc}/bfgminer/rpc-examples/api-example.c
+%{_doc}/bfgminer/rpc-examples/api-example.php
+%{_doc}/bfgminer/rpc-examples/api-example.py
+%{_doc}/bfgminer/rpc-examples/api-example.pyc
+%{_doc}/bfgminer/rpc-examples/api-example.pyo
+%{_doc}/bfgminer/rpc-examples/miner.php
 
 %changelog
 * Tue Nov 26 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 3.6.0-1
