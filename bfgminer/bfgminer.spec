@@ -39,21 +39,22 @@ make DESTDIR=$RPM_BUILD_ROOT install
 %{_libdir}/libblkmaker_jansson-0.1.la
 %{_libdir}/libblkmaker_jansson*.so*
 %{_libdir}/pkgconfig/libblkmaker_jansson-0.1.pc
-%{_doc}/bfgminer/AUTHORS
-%{_doc}/bfgminer/COPYING
-%{_doc}/bfgminer/HACKING
-%{_doc}/bfgminer/NEWS
-%{_doc}/bfgminer/README
-%{_doc}/bfgminer/README.ASIC
-%{_doc}/bfgminer/README.FPGA
-%{_doc}/bfgminer/README.RPC
-%{_doc}/bfgminer/example.conf
-%{_doc}/bfgminer/rpc-examples/api-example.c
-%{_doc}/bfgminer/rpc-examples/api-example.php
-%{_doc}/bfgminer/rpc-examples/api-example.py
-%{_doc}/bfgminer/rpc-examples/api-example.pyc
-%{_doc}/bfgminer/rpc-examples/api-example.pyo
-%{_doc}/bfgminer/rpc-examples/miner.php
+
+%docdir /usr/share/doc/
+%doc /usr/share/doc/bfgminer/COPYING
+%doc /usr/share/doc/bfgminer/HACKING
+%doc /usr/share/doc/bfgminer/NEWS
+%doc /usr/share/doc/bfgminer/README
+%doc /usr/share/doc/bfgminer/README.ASIC
+%doc /usr/share/doc/bfgminer/README.FPGA
+%doc /usr/share/doc/bfgminer/README.RPC
+%doc /usr/share/doc/bfgminer/example.conf
+%doc /usr/share/doc/bfgminer/rpc-examples/api-example.c
+%doc /usr/share/doc/bfgminer/rpc-examples/api-example.php
+%doc /usr/share/doc/bfgminer/rpc-examples/api-example.py
+%doc /usr/share/doc/bfgminer/rpc-examples/api-example.pyc
+%doc /usr/share/doc/bfgminer/rpc-examples/api-example.pyo
+%doc /usr/share/doc/bfgminer/rpc-examples/miner.php
 
 %changelog
 * Tue Nov 26 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 3.6.0-1
