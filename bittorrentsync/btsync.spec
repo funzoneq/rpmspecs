@@ -21,15 +21,12 @@ BitTorrent Sync by BitTorrent, Inc is a proprietary peer-to-peer file synchroniz
 rm -rf $RPM_BUILD_ROOT/*
 install -p -d -m 0755 %{buildroot}/usr/bin
 install -p -m 0755 btsync %{buildroot}/usr/bin/
-install -p -m 0644 LICENSE.TXT %{buildroot}/docs/
 
 %files
 %defattr(-,root,root,-)
+%doc LICENSE.TXT
 %{_bindir}/btsync
 
 %changelog
 * Fri Dec 06 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 1.2.82-1
 - new package built with tito
-
-* Sun Mar 24 2013 Arnoud Vermeer <rpms@freshway.biz> 3.0.2-0
-- Initial packaging
