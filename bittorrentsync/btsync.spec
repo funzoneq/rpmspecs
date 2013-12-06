@@ -4,7 +4,7 @@ Version: 	1.2.82
 Release: 	1%{?dist}
 License: 	Proprietary
 Group:		Applications/System
-Source: 	http://download-lb.utorrent.com/endpoint/btsync/os/linux-glibc23-x64/track/stable
+Source: 	http://download-lb.utorrent.com/endpoint/btsync/os/linux-glibc23-x64/track/stable/btsync_glibc23_x64.tar.gz
 Url: 	  	http://www.bittorrent.com/sync
 BuildRoot:  	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
