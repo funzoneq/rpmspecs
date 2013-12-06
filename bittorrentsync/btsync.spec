@@ -2,7 +2,7 @@ Summary: 	Secure, unlimited file-syncing. No cloud required.
 Name: 		btsync
 Version: 	1.2.82
 Release: 	0%{?dist}
-License: 	GPL
+License: 	Proprietary
 Group:		Applications/System
 Source: 	http://download-lb.utorrent.com/endpoint/btsync/os/linux-glibc23-x64/track/stable
 Url: 	  	http://www.bittorrent.com/sync
@@ -15,14 +15,17 @@ BitTorrent Sync by BitTorrent, Inc is a proprietary peer-to-peer file synchroniz
 %setup -n btsync_glibc23_x64
 
 %build
-./configure --prefix=%{_prefix} --bindir=%{_bindir} --libdir=%{_libdir} --includedir=%{_includedir} --enable-ztex --enable-bitforce --enable-icarus --enable-cpumining
+# precompiled package
 
 %install
 rm -rf $RPM_BUILD_ROOT/*
-make DESTDIR=$RPM_BUILD_ROOT install
+install -p -d -m 0755 %{buildroot}/usr/bin
+install -p -m 0755 btsync %{buildroot}/usr/bin/
+install -p -m 0644 LICENSE.TXT %{buildroot}/docs/
 
 %files
 %defattr(-,root,root,-)
+%{_bindir}/btsync
 
 %changelog
 * Sun Mar 24 2013 Arnoud Vermeer <rpms@freshway.biz> 3.0.2-0
