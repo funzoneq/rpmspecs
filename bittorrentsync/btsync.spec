@@ -1,7 +1,7 @@
 Summary: 	Secure, unlimited file-syncing. No cloud required.
 Name: 		btsync
 Version: 	1.2.82
-Release: 	0%{?dist}
+Release: 	1%{?dist}
 License: 	Proprietary
 Group:		Applications/System
 Source: 	http://download-lb.utorrent.com/endpoint/btsync/os/linux-glibc23-x64/track/stable
@@ -28,5 +28,8 @@ install -p -m 0644 LICENSE.TXT %{buildroot}/docs/
 %{_bindir}/btsync
 
 %changelog
+* Fri Dec 06 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 1.2.82-1
+- new package built with tito
+
 * Sun Mar 24 2013 Arnoud Vermeer <rpms@freshway.biz> 3.0.2-0
 - Initial packaging
