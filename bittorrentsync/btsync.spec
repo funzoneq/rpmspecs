@@ -8,6 +8,8 @@ Source: 	http://download-lb.utorrent.com/endpoint/btsync/os/linux-glibc23-x64/tr
 Url: 	  	http://www.bittorrent.com/sync
 BuildRoot:  	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
+Requires:	glibc
+
 %description
 BitTorrent Sync by BitTorrent, Inc is a proprietary peer-to-peer file synchronization tool available for Windows, Mac, Linux, Android, iOS and BSD. It can sync files between devices on a local network, or between remote devices over the Internet via secure, distributed P2P technology.
 
