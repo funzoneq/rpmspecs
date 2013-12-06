@@ -9,7 +9,7 @@ Url: 	  	    http://www.bittorrent.com/sync
 BuildRoot:  	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Provides: 	  libc.so.6(GLIBC_PRIVATE)(64bit)
 AutoReqProv: 	no
-Source0:      sample-config
+Source1:      sample-config
 
 %description
 BitTorrent Sync by BitTorrent, Inc is a proprietary peer-to-peer file synchronization tool available for Windows, Mac, Linux, Android, iOS and BSD. It can sync files between devices on a local network, or between remote devices over the Internet via secure, distributed P2P technology.
@@ -25,7 +25,7 @@ rm -rf $RPM_BUILD_ROOT/*
 install -p -d -m 0755 %{buildroot}/etc/btsync
 install -p -d -m 0755 %{buildroot}/usr/bin
 
-install -p -m 0644 %{SOURCE0} %{buildroot}/etc/btsync/
+install -p -m 0644 %{SOURCE1} %{buildroot}/etc/btsync/
 install -p -m 0755 btsync %{buildroot}/usr/bin/
 
 %files
