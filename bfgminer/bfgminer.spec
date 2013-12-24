@@ -49,6 +49,7 @@ make DESTDIR=$RPM_BUILD_ROOT install
 %doc /usr/share/doc/bfgminer/README.ASIC
 %doc /usr/share/doc/bfgminer/README.FPGA
 %doc /usr/share/doc/bfgminer/README.RPC
+%doc /usr/share/doc/bfgminer/README.CPU
 %doc /usr/share/doc/bfgminer/example.conf
 %doc /usr/share/doc/bfgminer/rpc-examples/api-example.c
 %doc /usr/share/doc/bfgminer/rpc-examples/api-example.php
