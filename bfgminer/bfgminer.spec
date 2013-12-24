@@ -1,7 +1,7 @@
 Summary: 	A bitcoin miner
 Name: 		bfgminer
 Version: 	3.8.1
-Release: 	0%{?dist}
+Release: 	1%{?dist}
 License: 	GPL
 Group:		Applications/System
 Source: 	http://luke.dashjr.org/programs/bitcoin/files/bfgminer/%{version}/bfgminer-%{version}.zip
@@ -59,6 +59,9 @@ make DESTDIR=$RPM_BUILD_ROOT install
 %doc /usr/share/doc/bfgminer/rpc-examples/miner.php
 
 %changelog
+* Tue Dec 24 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 3.8.1-1
+- Version bump (arnoud@tumblr.com)
+
 * Tue Nov 26 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 3.6.0-2
 - Require uthash-devel (a.vermeer@freshway.biz)
 
