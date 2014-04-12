@@ -215,8 +215,13 @@ fi
 
 
 %changelog
+<<<<<<< HEAD
 * Sat Apr 12 2014 Arnoud Vermeer <a.vermeer@freshway.biz> 1.4.7-1
 - Version bump (a.vermeer@freshway.biz)
+=======
+* Mon Mar 03 2014 Arnoud Vermeer <arnoud@tumblr.com> 1.5.10-1
+- Version bump (arnoud@tumblr.com)
+>>>>>>> 541d991e06ace54b2a1c8c9864aaa4233fddc5fb
 
 * Thu Nov 21 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 1.4.4-1
 - Version bump (arnoud@tumblr.com)
