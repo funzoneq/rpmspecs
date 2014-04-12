@@ -8,8 +8,8 @@
 %global  nginx_webroot       %{nginx_datadir}/html
 
 Name:              nginx
-Version:           1.4.4
-Release:           1%{?dist}
+Version:           1.4.7
+Release:           0%{?dist}
 
 Summary:           A high performance web server and reverse proxy server
 Group:             System Environment/Daemons
