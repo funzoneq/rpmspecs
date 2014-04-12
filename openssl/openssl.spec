@@ -55,7 +55,7 @@ Patch33: openssl-1.0.0-beta4-ca-dir.patch
 Patch34: openssl-0.9.6-x509.patch
 Patch35: openssl-0.9.8j-version-add-engines.patch
 Patch36: openssl-1.0.0e-doc-noeof.patch
-Patch38: openssl-1.0.1-beta2-ssl-op-all.patch
+#Patch38: openssl-1.0.1-beta2-ssl-op-all.patch
 Patch39: openssl-1.0.1c-ipv6-apps.patch
 #Patch40: openssl-1.0.0-nofips.patch
 Patch45: openssl-0.9.8j-env-nozlib.patch
@@ -167,7 +167,7 @@ from other formats to the formats used by the OpenSSL toolkit.
 %patch34 -p1 -b .x509
 %patch35 -p1 -b .version-add-engines
 %patch36 -p1 -b .doc-noeof
-%patch38 -p1 -b .op-all
+#%patch38 -p1 -b .op-all
 %patch39 -p1 -b .ipv6-apps
 #%patch40 -p1 -b .nofips
 %patch45 -p1 -b .env-nozlib
