@@ -27,7 +27,7 @@ Summary: Utilities from the general purpose cryptography library with TLS implem
 Name: %{name}
 Version: 1.0.1g
 # Do not forget to bump SHLIB_VERSION on version upgrades
-Release: 0%{?dist}
+Release: 1%{?dist}
 # We have to remove certain patented algorithms from the openssl source
 # tarball with the hobble-openssl script which is included below.
 # The original openssl upstream tarball cannot be shipped in the .src.rpm.
@@ -439,6 +439,9 @@ install -m644 %{SOURCE9} \
 %postun libs -p /sbin/ldconfig
 
 %changelog
+* Sat Apr 12 2014 Arnoud Vermeer <a.vermeer@freshway.biz> 1.0.1g-1
+- version bump (a.vermeer@freshway.biz)
+
 * Sat Aug 17 2013 Arnoud Vermeer <a.vermeer@freshway.biz> 1.0.1e-6
 - new package built with tito
 
