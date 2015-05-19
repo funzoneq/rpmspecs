@@ -8,6 +8,7 @@ Source: 	https://github.com/h2o/h2o/archive/v%{version}.tar.gz
 Url: 		https://h2o.github.io/
 BuildRoot:  	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:	cmake
+Source0: 	h2o.conf
 
 %description
 H2O is a very fast HTTP server written in C. It can also be used as a library.
@@ -22,14 +23,21 @@ make %{?_smp_mflags}
 %install
 make install DESTDIR=%{buildroot}
 
+install -p -d -m 0755 %{buildroot}/etc/h2o
+install -p -d -m 0755 %{buildroot}/var/log/h2o
+
+install -p -m 0644 %{SOURCE0} %{buildroot}/etc/h2o/h2o.conf
+
 %check
 ctest -V %{?_smp_mflags}
 
 %files
 %defattr(-,root,root)
+%config(noreplace) /etc/h2o/h2o.conf
 %{_bindir}/h2o
 /usr/share/h2o/fetch-ocsp-response
 /usr/share/h2o/start_server
+%attr(755,nobody,nobody) %dir /var/log/h2o
 
 %changelog
 * Tue May 19 2015 Arnoud Vermeer <a.vermeer@tech.leaseweb.com> 1.2.0-2
