@@ -13,7 +13,7 @@ BuildRequires:	cmake
 H2O is a very fast HTTP server written in C. It can also be used as a library.
 
 %prep
-%setup -c h2o-v%{version}
+%setup -c h2o-%{version}
 
 %build
 cmake -DWITH_BUNDLED_SSL=on .
