@@ -9,13 +9,13 @@ Url: 		https://h2o.github.io/
 BuildRoot:  	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:	cmake
 Requires:	perl-Server-Starter
-Source0: 	h2o.conf
+Source1: 	h2o.conf
 
 %description
 H2O is a very fast HTTP server written in C. It can also be used as a library.
 
 %prep
-%setup
+%setup -q
 
 %build
 %cmake -DWITH_BUNDLED_SSL=on .
@@ -27,7 +27,7 @@ make install DESTDIR=%{buildroot}
 install -p -d -m 0755 %{buildroot}/etc/h2o
 install -p -d -m 0755 %{buildroot}/var/log/h2o
 
-install -p -m 0644 %{SOURCE0} %{buildroot}/etc/h2o/h2o.conf
+install -p -m 0644 %{SOURCE1} %{buildroot}/etc/h2o/h2o.conf
 
 %check
 ctest -V %{?_smp_mflags}
