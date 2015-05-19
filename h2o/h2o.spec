@@ -40,7 +40,7 @@ ctest -V %{?_smp_mflags}
 /usr/share/h2o/fetch-ocsp-response
 /usr/share/h2o/start_server
 %attr(755,nobody,nobody) %dir /var/log/h2o
-%attr(755,nobody,nobody) %dir /var/www
+%dir /var/www
 
 %changelog
 * Tue May 19 2015 Arnoud Vermeer <a.vermeer@tech.leaseweb.com> 1.2.0-2
