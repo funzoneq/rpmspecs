@@ -8,7 +8,7 @@ Source: 	https://github.com/h2o/h2o/archive/v%{version}.tar.gz
 Url: 		https://h2o.github.io/
 BuildRoot:  	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:	cmake
-Requires:	perl-Server-Starter
+Requires:	perl-Server-Starter, openssl
 Source1: 	h2o.conf
 
 %description
