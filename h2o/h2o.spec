@@ -20,14 +20,16 @@ H2O is a very fast HTTP server written in C. It can also be used as a library.
 make %{?_smp_mflags}
 
 %install
-rm -rf $RPM_BUILD_ROOT/*
 make install DESTDIR=%{buildroot}
 
 %check
 ctest -V %{?_smp_mflags}
 
 %files
-%defattr(-,root,root,-)
+%defattr(-,root,root)
+%{_bindir}/h2o
+/usr/share/h2o/fetch-ocsp-response
+/usr/share/h2o/start_server
 
 %changelog
 * Tue May 19 2015 Arnoud Vermeer <a.vermeer@tech.leaseweb.com> 1.2.0-1
