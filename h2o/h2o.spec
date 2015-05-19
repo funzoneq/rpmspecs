@@ -26,6 +26,7 @@ make install DESTDIR=%{buildroot}
 
 install -p -d -m 0755 %{buildroot}/etc/h2o
 install -p -d -m 0755 %{buildroot}/var/log/h2o
+install -p -d -m 0755 %{buildroot}/var/www
 
 install -p -m 0644 %{SOURCE1} %{buildroot}/etc/h2o/h2o.conf
 
@@ -39,6 +40,7 @@ ctest -V %{?_smp_mflags}
 /usr/share/h2o/fetch-ocsp-response
 /usr/share/h2o/start_server
 %attr(755,nobody,nobody) %dir /var/log/h2o
+%attr(755,nobody,nobody) %dir /var/www
 
 %changelog
 * Tue May 19 2015 Arnoud Vermeer <a.vermeer@tech.leaseweb.com> 1.2.0-2
