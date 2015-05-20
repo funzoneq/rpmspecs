@@ -11,6 +11,7 @@ BuildRequires:	cmake
 Requires:	perl-Server-Starter, openssl
 Source1: 	h2o.conf
 Source2: 	index.html
+Source3: 	h2o.service
 
 %description
 H2O is a very fast HTTP server written in C. It can also be used as a library.
@@ -32,6 +33,7 @@ install -p -d -m 0755 %{buildroot}/var/run/h2o/
 
 install -p -m 0644 %{SOURCE1} %{buildroot}/etc/h2o/h2o.conf
 install -p -m 0644 %{SOURCE2} %{buildroot}/var/www/index.html
+install -p -m 0644 %{SOURCE3} %{buildroot}/etc/systemd/system/h2o.service
 
 %check
 ctest -V %{?_smp_mflags}
@@ -43,6 +45,7 @@ ctest -V %{?_smp_mflags}
 %{_bindir}/h2o
 /usr/share/h2o/fetch-ocsp-response
 /usr/share/h2o/start_server
+/etc/systemd/system/h2o.service
 %attr(755,nobody,nobody) %dir /var/log/h2o
 %attr(755,nobody,nobody) %dir /var/run/h2o
 %dir /var/www
