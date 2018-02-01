@@ -7,8 +7,8 @@
 
 Summary:  DHCPv4, DHCPv6 and DDNS server from ISC
 Name:     kea
-Version:  1.3.1
-Release:  1%{?dist}
+Version:  1.3.0
+Release:  7%{?dist}
 License:  MPLv2.0 and Boost
 URL:      http://kea.isc.org
 Source0:  http://ftp.isc.org/isc/kea/%{version}/kea-%{version}.tar.gz
@@ -297,10 +297,10 @@ EOF
 %{_libdir}/pkgconfig/dns++.pc
 
 %changelog
-* Thu Feb 01 2018 Arnoud Vermeer <a.vermeer@freshway.biz> 1.3.1-1
-- Converted fedora package to work on CentOS 7
+* Thu Feb 01 2018 Arnoud Vermeer <a.vermeer@freshway.biz> 1.3.0-7
+- Converted Fedora package to CentOS 7
 
-* Thu Feb 01 2018 Unknown name 1.3.0-6
+* Thu Feb 01 2018 Arnoud Vermeer <a.vermeer@freshway.biz> 1.3.0-6
 - new package built with tito
 
 * Wed Jan 31 2018 Pavel Zhukov <landgraf@fedoraproject.org> - 1.3.0-4
