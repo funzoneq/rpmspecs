@@ -67,6 +67,9 @@ make DESTDIR=%{buildroot} install
 %dir %{_includedir}/libyang/
 
 %changelog
+* Tue Feb 12 2019 Arnoud Vermeer <a.vermeer@freshway.biz> 0.16-r3
+- version 0.16-r3
+
 * Thu May 31 2018  Michal Vasko <mvasko@cesnet.cz> 0.14.81
 - data tree BUGFIX update set number in ly_set_merge (Olivier Matz)
 
