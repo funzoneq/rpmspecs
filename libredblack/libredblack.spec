@@ -23,7 +23,7 @@ Also provides a code generator for producing custom versions of the library
 tailored for particular item data types.
 
 %prep
-%setup
+%setup -q -n libredblack-%{version}
 
 %build
 %configure
