@@ -1,7 +1,7 @@
 Summary: 	    RedBlack Balanced Tree Searching and Sorting Library
 Name: 		    libredblack
 Version: 	    1.3.0
-Release: 	    3%{?dist}
+Release: 	    4%{?dist}
 License: 	    Proprietary
 Group:		    Applications/System
 Source: 	    https://sourceforge.net/projects/libredblack/files/libredblack/1.3/libredblack-1.3.tar.gz/download/libredblack-%{version}.tar.gz
@@ -62,6 +62,9 @@ rm -rf ${RPM_BUILD_ROOT}
 %doc example4.rb
 
 %changelog
+* Tue Feb 12 2019 Arnoud Vermeer <a.vermeer@freshway.biz> 1.3.0-4
+- Add required build tools (a.vermeer@freshway.biz)
+
 * Tue Feb 12 2019 Arnoud Vermeer <a.vermeer@freshway.biz> 1.3.0-3
 - Standardize build 
 
