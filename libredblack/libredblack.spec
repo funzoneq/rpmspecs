@@ -4,9 +4,11 @@ Version: 	    1.3.0
 Release: 	    3%{?dist}
 License: 	    Proprietary
 Group:		    Applications/System
-Source0: 	    https://sourceforge.net/projects/libredblack/files/libredblack/1.3/libredblack-1.3.tar.gz/download/libredblack-%{version}.tar.gz
+Source: 	    https://sourceforge.net/projects/libredblack/files/libredblack/1.3/libredblack-1.3.tar.gz/download/libredblack-%{version}.tar.gz
 Url: 	  	    http://libredblack.sourceforge.net/
 BuildRoot:  	    %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+
+BuildRequires: python
 
 %package devel
 Summary: Additional files and headers required to compile programs using libredblack
@@ -23,14 +25,15 @@ Also provides a code generator for producing custom versions of the library
 tailored for particular item data types.
 
 %prep
-%setup -q -n libredblack-%{version}
+%setup
 
 %build
 %configure
 CFLAGS="$RPM_OPT_FLAGS" make
 
 %install
-%make_install
+rm -rf ${RPM_BUILD_ROOT}
+make install DESTDIR=${RPM_BUILD_ROOT}
 
 %clean
 rm -rf ${RPM_BUILD_ROOT}
