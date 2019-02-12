@@ -25,8 +25,5 @@ make install DESTDIR=%{buildroot}
 %defattr(-,root,root,-)
 
 %changelog
-* Tue Feb 12 2019 Unknown name 1.3.0-1
-- new package built with tito
-
-* Tue Feb 12 2018 Arnoud Vermeer <a.vermeer@freshway.biz> 1.3.0
+* Tue Feb 12 2019 Arnoud Vermeer <a.vermeer@freshway.biz> 1.3.0-1
 - new package built with tito
