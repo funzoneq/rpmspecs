@@ -8,6 +8,11 @@ Source: 	    https://sourceforge.net/projects/libredblack/files/libredblack/1.3/
 Url: 	  	    http://libredblack.sourceforge.net/
 BuildRoot:  	    %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
+BuildRequires: autoconf
+BuildRequires: automake
+BuildRequires: libtool
+BuildRequires: gcc-c++
+
 %description
 A library to provide the RedBlack balanced tree searching and sorting algorithm. The algorithm was taken from the book "Introduction to Algorithms" by Cormen, Leiserson & Rivest.
 
