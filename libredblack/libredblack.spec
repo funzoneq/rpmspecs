@@ -4,7 +4,7 @@ Version: 	    1.3.0
 Release: 	    3%{?dist}
 License: 	    Proprietary
 Group:		    Applications/System
-Source: 	    https://sourceforge.net/projects/libredblack/files/libredblack/1.3/libredblack-1.3.tar.gz/download/libredblack-%{version}.tar.gz
+Source0: 	    https://sourceforge.net/projects/libredblack/files/libredblack/1.3/libredblack-1.3.tar.gz/download/libredblack-%{version}.tar.gz
 Url: 	  	    http://libredblack.sourceforge.net/
 BuildRoot:  	    %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
