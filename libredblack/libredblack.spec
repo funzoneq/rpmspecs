@@ -8,24 +8,55 @@ Source: 	    https://sourceforge.net/projects/libredblack/files/libredblack/1.3/
 Url: 	  	    http://libredblack.sourceforge.net/
 BuildRoot:  	    %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires: autoconf
-BuildRequires: automake
-BuildRequires: libtool
-BuildRequires: gcc-c++
+%package devel
+Summary: Additional files and headers required to compile programs using libredblack
+Group: Development/Libraries
+Requires: %{name} = %{version}
 
 %description
-A library to provide the RedBlack balanced tree searching and sorting algorithm. The algorithm was taken from the book "Introduction to Algorithms" by Cormen, Leiserson & Rivest.
+This implements the redblack balanced tree algorithm.
+
+%description devel
+To develop programs based upon the libredblack library, the system needs to
+have these header and object files available for creating the executables.
+Also provides a code generator for producing custom versions of the library
+tailored for particular item data types.
 
 %prep
-%setup -n libredblack-%{version}
+%setup
 
+%build
 %configure
+CFLAGS="$RPM_OPT_FLAGS" make
 
 %install
 %make_install
 
+%clean
+rm -rf ${RPM_BUILD_ROOT}
+
+%post -p /sbin/ldconfig
+
+%postun -p /sbin/ldconfig
+
 %files
-%defattr(-,root,root,-)
+%defattr(-, root, root)
+%{_libdir}/libredblack.so.*
+
+%files devel
+%defattr(-, root, root)
+%{_libdir}/lib*.so
+%{_libdir}/*a
+%{_prefix}/share/libredblack/*
+%{_includedir}/*
+%{_mandir}/man3/*
+%{_mandir}/man1/*
+%{_bindir}/*
+%doc example.c
+%doc example1.c
+%doc example2.c
+%doc example3.c
+%doc example4.rb
 
 %changelog
 * Tue Feb 12 2019 Arnoud Vermeer <a.vermeer@freshway.biz> 1.3.0-3
